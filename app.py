@@ -16,6 +16,10 @@ from twitter import *
 app = Flask(__name__)
 app.config.from_object('config')
 
+@app.route('/')
+def home():
+    return "hello"
+
 @app.route('/sendMsg',methods=['GET', 'POST'])
 def sendMsg():
     form = SendMsgForm(request.form)
@@ -39,3 +43,6 @@ def sendMsgToClients(msg):
         t.direct_messages.new(user="nithiniperera",text =msg +str(i))
 
     return "successfully sent the msg: " + msg
+
+if __name__ == "__main__":
+    app.run()
