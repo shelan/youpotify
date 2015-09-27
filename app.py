@@ -30,19 +30,25 @@ def home():
 def send():
     form = SendMsgForm(request.form)
     if request.method == 'POST':
-        return sendMsgToClients(form.name._value())
+        return send_msg_to_clients(form.name._value())
 
     elif request.method == 'GET':
         return render_template('forms/send.html', form=form)
 
 
-def sendMsgToClients(msg):
+def send_msg_to_clients(msg):
     twitter = Twitter(
         auth=OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
-    for i in range(1):
-        results = twitter.statuses.update(status=msg)
+    file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
+    i = 0
+    for acc_id in file:
+        status_msg = "@" + acc_id + " " + msg
+        results = twitter.statuses.update(status=status_msg)
+        i += 1
+    # return "Message sent to " + str(i) + " users"
         form = SendMsgForm(request.form)
+        form.result.data = ("<p>Message sent to " + str(i) + " users</p>")
     return render_template('forms/send.html', form=form)
 
 
