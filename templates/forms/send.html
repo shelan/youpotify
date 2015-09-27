@@ -5,6 +5,7 @@
         <h3 class="form-heading">Send Message<a href="{{ url_for('send') }}" title="Back to homepage"><i
                 class="fa fa-home pull-right"></i></a></h3>
         {{ form.name(class_ = 'form-control first-input', placeholder = form.name.label.text, required = true, autofocus = true) }}
+        </br><div id="result"></div>
         </br><input type="submit" value="Send Message" class="btn btn-primary btn-lg btn-block">
     </form>
 {% endblock %}
