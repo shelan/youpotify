@@ -23,7 +23,7 @@ execfile("oauth.py", config)
 @app.route('/')
 def home():
     form = SendMsgForm(request.form)
-    return render_template('forms/send.html',form =form)
+    return render_template('forms/send.html', form=form)
 
 
 @app.route('/send', methods=['GET', 'POST'])
@@ -40,8 +40,8 @@ def send_msg_to_clients(msg):
     twitter = Twitter(
         auth=OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
-   # file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
-    ids = ['shelan','nithiniperera']
+    # file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
+    ids = ['shelan', 'nithiniperera']
     i = 0
     form = SendMsgForm(request.form)
     try:
@@ -50,23 +50,24 @@ def send_msg_to_clients(msg):
             results = twitter.statuses.update(status=status_msg)
             i += 1
         # return "Message sent to " + str(i) + " users"
-        #  form.result.data = ("<p>Message sent to " + str(i) + " users</p>")
-        flash("Message sent to " + str(i) + " users")
-    except Exception:
-        flash("\uSomething went wrong","error")
+        # form.result.data = ("<p>Message sent to " + str(i) + " users</p>")
+        flash("Message sent to " + str(i) + " users", "alert-info")
+    except Exception, e:
+        flash(str(e), "alert-danger")
 
     return render_template('forms/send.html', form=form)
 
 
 @app.errorhandler(500)
 def internal_error(error):
-    #db_session.rollback()
+    # db_session.rollback()
     return render_template('errors/500.html'), 500
 
 
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('errors/404.html'), 404
+
 
 if __name__ == "__main__":
     app.run()
