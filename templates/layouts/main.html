@@ -54,6 +54,9 @@
           <ul class="nav navbar-nav">
             <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
           </ul>
+         <ul class="nav navbar-nav">
+           <a href="{{ url_for('configure') }}">Configure</a></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>

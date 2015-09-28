@@ -2,10 +2,11 @@
 # Imports
 # ----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, url_for
 # from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
+from werkzeug.utils import secure_filename, redirect
 from forms import *
 from twitter import *
 
@@ -34,6 +35,18 @@ def send():
 
     elif request.method == 'GET':
         return render_template('forms/send.html', form=form)
+
+
+@app.route('/configure', methods=('GET', 'POST'))
+def configure():
+    form = UploadForm()
+    if request.method == 'POST':
+        input_file = request.files['input_file']
+        flash("users uploaded",'alert-success')
+        return redirect(url_for('send'))
+        # Do stuff
+    else:
+        return render_template('forms/user.html', form=form)
 
 
 def send_msg_to_clients(msg):

@@ -33,4 +33,12 @@ a {
  * Various other styles
  ****************************************************************************/
 
+#browsebutton {
+  background-color: white;
+}
+
+#my-file-selector {
+    display: none;
+}
+
 /* Various other styles end */
