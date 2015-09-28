@@ -2,7 +2,7 @@
 # Imports
 # ----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 # from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
@@ -40,15 +40,21 @@ def send_msg_to_clients(msg):
     twitter = Twitter(
         auth=OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
-    file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
+   # file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
+    ids = ['shelan','nithiniperera']
     i = 0
-    for acc_id in file:
-        status_msg = "@" + acc_id + " " + msg
-        results = twitter.statuses.update(status=status_msg)
-        i += 1
-    # return "Message sent to " + str(i) + " users"
-        form = SendMsgForm(request.form)
-        form.result.data = ("<p>Message sent to " + str(i) + " users</p>")
+    form = SendMsgForm(request.form)
+    try:
+        for acc_id in ids:
+            status_msg = "@" + acc_id + " " + msg
+            results = twitter.statuses.update(status=status_msg)
+            i += 1
+        # return "Message sent to " + str(i) + " users"
+        #  form.result.data = ("<p>Message sent to " + str(i) + " users</p>")
+        flash("Message sent to " + str(i) + " users")
+    except Exception:
+        flash("\uSomething went wrong","error")
+
     return render_template('forms/send.html', form=form)
 
 

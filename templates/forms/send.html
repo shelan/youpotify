@@ -1,21 +1,18 @@
 {% extends 'layouts/form.html' %}
 {% block title %}Send Message{% endblock %}
 {% block content %}
-
+<br>
     <form method="post" action="{{ url_for('send') }}" class="form-group">
-        <h3 class="form-heading">Post Message<a href="{{ url_for('send') }}" title="Back to homepage">
-            <i class="fa fa-home pull-right"></i></a></h3>
+        <h4 class="form-heading">Post Message</h4>
         <br>
-        {{ form.name(class_ = 'form-control first-input', placeholder = form.name.label.text, required = true, autofocus = true) }}
-<<<<<<< HEAD
-        </br>
-        <div class="col-m">
+        <div class="col-lg-10">
+        {{ form.name(class_ = 'form-control input-lg', placeholder = form.name.label.text, required = true, autofocus = true) }}
+         </div>
+        </br></br></br><br>
+        <div id="result"></div>
+        <div class="col-lg-3">
             <input type="submit" value="Send Message" class="btn btn-primary btn-lg btn-block">
         </div>
-=======
-        </br><div id="result"></div>
-        </br><input type="submit" value="Send Message" class="btn btn-primary btn-lg btn-block">
->>>>>>> 503856cac99bd279407f48225be22f909a345872
     </form>
 
 {% endblock %}
