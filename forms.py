@@ -1,10 +1,11 @@
 from flask.ext.wtf.file import FileRequired, FileAllowed
+from wtforms import validators
 from flask_wtf import Form
 from wtforms import SubmitField, StringField, FileField
 from wtforms.validators import DataRequired
 
 class SendMsgForm(Form):
-    name = StringField('Enter your Message', [DataRequired()])
+    name = StringField('Enter your Message', [DataRequired(),validators.Length(max=120)])
     result = StringField('result', [DataRequired()])
     submit = SubmitField("Send")
 

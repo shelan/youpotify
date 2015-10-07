@@ -61,8 +61,6 @@ def send_msg_to_clients(msg):
         file = open("uploaded_accounts.txt", "r")
         ids = file.readlines();
 
-        flash("users ",ids,"alert-info")
-
         i = 0
         form = SendMsgForm(request.form)
         for acc_id in ids:
