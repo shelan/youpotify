@@ -11,10 +11,14 @@
         </div>
         <form class="form-inline center-block" action="{{ url_for('configure') }}" method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
-            <div class="col-md-6">
-                <input mclass="btn btn-default input-group-addon" for="my-file-selector"type="file" class="form-control" readonly>
+            <div class="input-group">
+                <label id="browsebutton" for="my-file-selector">
+                    {{ form.input_file(id="my-file-selector") }}
+                </label>
+                <input type="file" class="form-control" readonly>
             </div>
-            <div class="col-md-6"> {{ form.submit(class_="btn btn-primary") }}</div>
+            </br>
+            {{ form.submit(class_="btn btn-primary") }}
         </form>
     </div>
 {% endblock %}
