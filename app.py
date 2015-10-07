@@ -41,7 +41,7 @@ def send():
 def configure():
     form = UploadForm()
     if request.method == 'POST':
-        input_file = request.files['input_file']
+        input_file = request.files['accounts']
         content = input_file.read();
         file = open("uploaded_accounts.txt", "w")
         file.write(content)

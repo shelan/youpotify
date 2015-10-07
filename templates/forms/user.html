@@ -9,7 +9,7 @@
                 per row
             </div>
         </div>
-        <form class="form-inline center-block" action="{{ url_for('configure') }}" method="POST" enctype="multipart/form-data">
+        <!--<form class="form-inline center-block" action="{{ url_for('configure') }}" method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="input-group">
                 <label id="browsebutton" for="my-file-selector">
@@ -19,6 +19,11 @@
             </div>
             </br>
             {{ form.submit(class_="btn btn-primary") }}
+        </form>
+<br/><br/>-->
+        <form class="form-inline center-block" action="{{ url_for('configure') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="accounts"><br/>
+           <input class="btn btn-primary"  type="submit">
         </form>
     </div>
 {% endblock %}
