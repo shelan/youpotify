@@ -42,6 +42,9 @@ def configure():
     form = UploadForm()
     if request.method == 'POST':
         input_file = request.files['input_file']
+        content = input_file.read();
+        file = open("uploaded_accounts.txt", "w")
+        file.write(content)
         flash("users uploaded",'alert-success')
         return redirect(url_for('send'))
         # Do stuff
@@ -54,7 +57,9 @@ def send_msg_to_clients(msg):
         auth=OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
     # file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
-    ids = ['shelan', 'nithiniperera']
+    file = open("uploaded_accounts.txt", "r")
+    ids = file.readlines();
+
     i = 0
     form = SendMsgForm(request.form)
     try:
