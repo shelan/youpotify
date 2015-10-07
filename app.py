@@ -53,16 +53,18 @@ def configure():
 
 
 def send_msg_to_clients(msg):
-    twitter = Twitter(
-        auth=OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
-
-    # file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
-    file = open("uploaded_accounts.txt", "r")
-    ids = file.readlines();
-
-    i = 0
-    form = SendMsgForm(request.form)
     try:
+        twitter = Twitter(
+            auth=OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
+
+        # file = open("/Users/ashansa/softwares/github/socialPlatform/accounts.txt", "r")
+        file = open("uploaded_accounts.txt", "r")
+        ids = file.readlines();
+
+        flash("users ",ids,"alert-info")
+
+        i = 0
+        form = SendMsgForm(request.form)
         for acc_id in ids:
             status_msg = "@" + acc_id + " " + msg
             results = twitter.statuses.update(status=status_msg)
