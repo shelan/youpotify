@@ -21,10 +21,12 @@
             {{ form.submit(class_="btn btn-primary") }}
         </form>
 <br/><br/>-->
+        <div class="col-md-offset-1">
         <form class="form-inline center-block" action="{{ url_for('configure') }}" method="POST" enctype="multipart/form-data">
             <input type="file" name="accounts"><br/>
            <input class="btn btn-primary"  type="submit">
         </form>
+        </div>
     </div>
 {% endblock %}
 {% block scripts %}
