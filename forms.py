@@ -5,7 +5,7 @@ from wtforms import SubmitField, StringField, FileField
 from wtforms.validators import DataRequired
 
 class SendMsgForm(Form):
-    name = StringField('Enter your Message', [DataRequired(),validators.Length(max=120)])
+    name = StringField('Enter your Twitter name  Eg: shelan', [DataRequired(),validators.Length(max=120)])
     result = StringField('result', [DataRequired()])
     submit = SubmitField("Send")
 

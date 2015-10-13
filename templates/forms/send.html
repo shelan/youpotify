@@ -1,19 +1,58 @@
 {% extends 'layouts/form.html' %}
 {% block title %}Send Message{% endblock %}
 {% block content %}
-<br>
     <form method="post" action="{{ url_for('send') }}" class="form-group">
-        <h4 class="form-heading">Post Message</h4>
         <br>
-        <div class="col-lg-10">
-        {{ form.name(class_ = 'form-control input-lg', placeholder = form.name.label.text, required = true, autofocus = true) }}
-         </div>
-        </br></br></br><br>
-        <div id="result"></div>
-        <div class="col-lg-3">
-            <input type="submit" value="Send Message" class="btn btn-primary btn-lg btn-block">
+
+        <div class="jumbotron">
+            <h5> Why I want to be a part of "Make IT Matter ?"</h5>
+            <li>I love to innovate, build things and make this world a better place</li>
+            <li>MSc Student in Distributed Computing @ KTH Sweden</li>
+            <li>Apache Committer, Open Source contributor</li>
+            <li>Young Innovator Alumnus at ITU Geneva</li>
+            <li>Inspired to solve problems and make this world more wonderful</li>
+
+            <div class="col-lg-2">
+                <a src=""><i class="fui-linkedin" src=""></i></a>
+            </div>
+             <div class="col-lg-2">
+                <a src=""><i class="fui-github" src=""></i></a>
+            </div>
         </div>
+
+
+        <div class="todo-search">
+            {{ form.name(class_ = 'todo-search-field', placeholder = form.name.label.text, required = true, autofocus = true) }}
+        </div>
+        </br>
+
+        <div id="result" class="row">
+            {% for album in albums %}
+                <div class=" col-lg-4">
+                    <a onclick=play('{{ album['items'][0]['preview_url'] }}') class="thumbnail"
+                       title={{ album['items'][0]['name'] }}
+                       data-toggle="tooltip" alt="song">
+
+                        <img src={{ album['items'][0]['album']['images'][0]['url'] }} alt="...">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        {#<div class="col-lg-3">
+            <input type="submit" value="Send Message" class="btn btn-primary btn-lg btn-block">
+        </div>#}
     </form>
+    <script>
+        var audio = new Audio();
+        function play(url) {
+            audio.src = url;
+            audio.play();
+        }
+        function stop() {
+            //audio.stop();
+        }
+
+    </script>
 
 {% endblock %}
 
