@@ -1,7 +1,4 @@
-import ConfigParser
-import os
 import spotipy
-import pprint
 from twitter import *
 
 
