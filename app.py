@@ -30,6 +30,9 @@ def home():
     form = SendMsgForm(request.form)
     return render_template('forms/send.html', form=form)
 
+@app.route('/about')
+def about():
+    return render_template('pages/placeholder.about.html')
 
 @app.route('/send', methods=['GET', 'POST'])
 def send():

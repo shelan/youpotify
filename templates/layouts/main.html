@@ -41,24 +41,39 @@
   <!-- Wrap all page content here -->
   <div id="wrap">
 
-    <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Shelan Perera</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Shelan Perera</a>
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+            <ul class="nav navbar-nav">
+                <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a
+                        href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a
+                        href="http://shelan.org" target="_blank">Blog</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a
+                        href="https://github.com/shelan" target="_blank">Github</a></li>
+            </ul>
+
+        <ul class="nav navbar-nav">
+            <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a
+                    href="https://www.linkedin.com/pub/shelan-perera/a/194/465" target="_blank">Linkedin</a></li>
+        </ul>
+</div>
+<!--/.nav-collapse -->
+</div>
+</div>
 
     <!-- Begin page content -->
     <main id="content" role="main" class="container">
@@ -82,7 +97,7 @@
 
   <div id="footer">
     <div class="container">
-      <p>Your Company &copy; All Rights Reserved.</p>
+      <p>Shelan Perera @ 2015 &copy; All Rights Reserved.</p>
       {% block footer %}{% endblock %}
     </div>
   </div>
