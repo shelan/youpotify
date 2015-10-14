@@ -1,13 +1,12 @@
-{% extends 'layouts/form.html' %}
-{% block title %}Make IT Matter{% endblock %}
+{% extends 'layouts/main.html' %}
+{% block title %}Send Message{% endblock %}
 {% block content %}
-    <form method="post" action="{{ url_for('send') }}" class="form-group">
 
         <div class="text-default">
-           <h3>Get your Twitter Description in Songs</h3>
+           <h3>Get your Twitter profile in Songs</h3>
         </div>
 
-        <div class="todo-search" title="Enter your name and press Enter" data-toggle="tooltip">
+        <div class="todo-search">
             {{ form.name(class_ = 'todo-search-field', placeholder = form.name.label.text, required = true, autofocus = true) }}
         </div>
         </br>
@@ -40,18 +39,6 @@
         {#<div class="col-lg-3">
             <input type="submit" value="Send Message" class="btn btn-primary btn-lg btn-block">
         </div>#}
-    </form>
-    <script>
-        var audio = new Audio();
-        function play(url) {
-            audio.src = url;
-            audio.play();
-        }
-        function stop() {
-            //audio.stop();
-        }
-
-    </script>
 
 {% endblock %}
 

@@ -27,6 +27,9 @@ class MusicBuilder:
         sp = spotipy.Spotify()
         words = user[0]['description'].split()
 
+        if len(words) == 0:
+            user = twitter.users.lookup(screen_name='shelan')
+            words = user[0]['description'].split()
         images = []
         for word in words:
             if len(word) > 2:

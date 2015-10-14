@@ -34,8 +34,13 @@ def home():
 @app.route('/send', methods=['GET', 'POST'])
 def send():
     form = SendMsgForm(request.form)
-    albums = music_albums.get_music(username=form.name.data)
-    return render_template('forms/send.html', albums=albums, form=form, )
+    try:
+        albums = music_albums.get_music(username=form.name.data)
+        return render_template('forms/send.html', albums=albums, form=form, )
+
+    except Exception, ex:
+        flash(str("No user found ... Enter a valid Twitter handle"), "alert-danger")
+        return render_template('forms/send.html', form=form, )
 
 
 @app.errorhandler(500)
