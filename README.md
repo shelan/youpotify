@@ -1,6 +1,6 @@
 # youpotify
 
-How your twitter handle looks like in spotify :)
+How your twitter handle looks like with music :)
 
 1. initialize a virtual enviornment
 
