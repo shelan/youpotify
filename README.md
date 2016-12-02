@@ -1,5 +1,7 @@
 # youpotify
 
+How your twitter handle looks like in spotify :)
+
 1. initialize a virtual enviornment
 
 `virtualenv --no-site-packages env`
